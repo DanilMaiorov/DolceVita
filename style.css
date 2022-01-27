@@ -121,7 +121,7 @@ header {
 }
 /* профайл */
 .section {
-    margin-top: 100px;
+    margin-top: 10rem;
 }
 .profile__item { 
     display: flex;
@@ -158,6 +158,5 @@ header {
     margin-bottom: 40px;
 }
 .profile__text-content:last-child {
-
     margin-bottom: 0px;
 }
