@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const o="module 1";console.log(o),console.log(o)})()})();
