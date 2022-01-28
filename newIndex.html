@@ -13,37 +13,41 @@
 </head>
 <body>
 <!-- Header  -->
-    <header class="header">
-        <div class="container">
-            <div class="header__wrapper">
-                <div class="header__logo">
-                    <div class="logo-img">
-                        <img src="./imgNew/logo_top.jpg" alt="" class="logo-img__img">
+    <header class="header"id="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__content">
+                    <div class="header__logo">
+                        <div class="logo-img">
+                            <a href="#header">
+                                <img src="./imgNew/logo_top.jpg" alt="" class="logo-img__img">
+                            </a>
+                        </div>
+                        <span class="logo-title">DolceVita</span>
                     </div>
-                    <span class="logo-title">DolceVita</span>
+                    <nav class="header__nav">
+                        <ul class="nav-list">
+                            <li class="nav-list__item">
+                                <a href="#portfolio" class="nav-list__item-link">Портфолио</a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#profile" class="nav-list__item-link">Профайл</a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#price" class="nav-list__item-link">Прайс</a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#feedback" class="nav-list__item-link">Обратная связь/Как нас найти?</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav class="header__nav">
-                    <ul class="nav-list">
-                        <li class="nav-list__item">
-                            <a href="3" class="nav-list__item-link">Портфолио</a>
-                        </li>
-                        <li class="nav-list__item">
-                            <a href="3" class="nav-list__item-link">Профайл</a>
-                        </li>
-                        <li class="nav-list__item">
-                            <a href="3" class="nav-list__item-link">Прайс</a>
-                        </li>
-                        <li class="nav-list__item">
-                            <a href="3" class="nav-list__item-link">Обратная связь</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
         <div class="header__cover"></div>
     </header>
 <!-- Portfolio Section -->
-    <section class="portfolio">
+    <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="portfolio__wrapper">
                 <div class="section__title">
@@ -56,13 +60,13 @@
                         </div>
                         <span class="item-portfolio__text">Studio</span>
                     </div>
-                    <div class="item-portfolio bottom-gap">
+                    <div class="item-portfolio">
                         <div class="item-portfolio__img">
                             <img src="/imgNew/portfolio-2.PNG" alt="portrait photo">
                         </div>
                         <span class="item-portfolio__text">Portrait</span>
                     </div>
-                    <div class="item-portfolio bottom-gap">
+                    <div class="item-portfolio">
                         <div class="item-portfolio__img">
                             <img src="/imgNew/portfolio-3.PNG" alt="theme photo">
                         </div>
@@ -86,13 +90,12 @@
                         </div>
                         <span class="item-portfolio__text">Family</span>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 <!-- Profile Section -->
-    <section class="profile">
+    <section class="profile" id="profile">
         <div class="container">
             <div class="profile__wrapper">
                 <div class="section__title">
@@ -108,13 +111,12 @@
                         <p class="content-profile__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quisquam voluptatum perspiciatis corporis, laborum quos debitis ex placeat reprehenderit hic voluptates. Laborum excepturi voluptatum quo, error architecto ipsa enim quasi!</p>
                         <p class="content-profile__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, ex consequatur quibusdam accusamus nisi rem? Perferendis obcaecati ab quo quod cumque voluptates recusandae. Qui impedit eum minus aliquid assumenda ipsum?</p>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 <!-- Price Section -->
-    <section class="price">
+    <section class="price" id="price">
         <div class="container">
             <div class="price__wrapper">
                 <div class="section__title">
@@ -169,18 +171,120 @@
                         </div>
                     </div>
                 </div>
-                <div class="price__individual">*так же принимаются заявки на съёмки по вашему индивидуальному заказу</div>
+                <div class="price__individual">*так же принимаются заявки на съёмки по вашему индивидуальному проекту</div>
             </div>
         </div>
     </section>
 <!-- Question section -->
-    <section class="question"></section>
-<!--     <footer class="footer">
-        <div class="container">
-            <div class="footer__wrapper">
+    <section class="question" id="feedback">
+        <div class="question__cover">
+            <div class="container">
 
+                <div class="question__wrapper">
+
+                    <div class="form-question">
+                        <div class="form-question__left">
+                            <div class="section__title">
+                                <h2 class="title-text center">Обратная связь</h2>
+                            </div>
+                            <div class="form">
+                                <form class="question__form" action="#">
+                                    <div class="input form__inputs">    
+                                        <input class="input form__input" type="text" placeholder="Введите ваше имя">
+                                        <input class="input form__input" type="text" placeholder="Введите ваш E-Mail">
+                                    </div>
+                                    <textarea class="input form__input form__textarea" name="" id="" cols="30" rows="10" placeholder="Ваше сообщение"></textarea>
+                                    <button class="button form__button" type="button">Отправить сообщение</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="form-question__right">
+                            <div class="map">
+                                <div class="section__title">
+                                    <h2 class="title-text center">Как нас найти?</h2>
+                                </div>
+                                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a01bcefb8806b2e41200b107dd3c60e5f8c9ab3e4dfdf320e6ffeab8afa7090&amp;source=constructor" width="600" height="300" frameborder="0"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </section>
+<!-- Footer section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_items">
+                <div class="footer__item">
+                    <ul class="footer__item-list">
+                        <li class="item-list__link">
+                            <a href="#portfolio">Портфолио</a>
+                        </li>
+                        <li class="item-list__link">
+                            <a href="#profile">Профайл</a>
+                        </li>
+                        <li class="item-list__link">
+                            <a href="#price">Прайс</a>
+                        </li>
+                        <li class="item-list__link">
+                            <a href="#feedback">Обратная связь/Как нас найти?</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__item">
+                    <div class="footer__item-img">
+                        <img src="/imgNew/footer-logo.png" alt="dolceVita logo">
+                    </div>
+                </div>
+                <div class="footer__item">
+                    <div class="footer__items-logo">
+                        <a class="footer__item-logo" href="#">
+                            <img src="/imgNew/instagram-icon.png" alt="icon instgram">
+                        </a>
+                        <a class="footer__item-logo" href="#">
+                            <img src="/imgNew/whats-app-icon.png" alt="icon what's app">
+                        </a>
+                        <a class="footer__item-logo" href="#">
+                            <img src="/imgNew/telegram-icon.png" alt="icon telegram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="qwe" color="black" size="0.1rem">
+            <div class="footer__text">
+                © DolceVita Studio 2021. Все права защищены. 
             </div>
         </div>
-    </footer> -->
+    </footer>
+    <!-- popup -->
+    <div class="popup-overlay"></div>
+    <div class="popup">
+        <div class="popup__wrapper">
+            <button class="popup__close close-main-form fas fa-times"></button>
+            <div class="popup__title">Мы перезвоним вам в ближайшее время</div>
+            <div class="popup__content">
+                <form class="form-popup" action="">
+                    <input class="form-input" type="name" placeholder="Введите ваше имя*" required>
+                    <input class="form-input" type="tel" placeholder="Ведите ваш телефон*" required>
+                    <input class="form-input" type="email" placeholder="Введите ваш E-Mail">
+                    <p><span class="red">*</span>- поля, обязательные для заполнения</p>
+                    <button class="button form__button">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- popup instagram -->
+    <div class="popup-inst">
+        <div class="popup-inst__content">
+            <button class="popup__close fas fa-times"></button>
+            <div class="popup-inst__img">
+                <img src="/imgNew/qr-code.PNG" alt="qr code inst">
+            </div>
+            <a href="https://www.instagram.com/dolcevita_studio/" target="_blank"><button class=" button popup-inst__btn" type="button">Перейти в Instagram</button></a>
+        </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/e70ed3cf41.js" crossorigin="anonymous"></script>
 </body>
 </html>
