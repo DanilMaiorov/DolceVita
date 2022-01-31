@@ -38,7 +38,7 @@ hr {
     position: fixed;
     max-width: 98.72vw;
     width: 100%;
-    z-index: 1;
+    z-index: 1000;
     border-bottom: 0.2rem solid #E3E3E4;
     overflow: hidden
 }
@@ -110,6 +110,7 @@ hr {
 .section__title {
     margin-bottom: 6rem;
     font-size: 3rem;
+    text-align: center;
 }
 .portfolio__items {
     display: flex;
@@ -199,6 +200,7 @@ hr {
     background: rgb(247, 233, 237);
     padding-bottom: 3.8rem;
     padding-top: 8.2rem;
+    position: relative;
 }
 .price__wrapper {
     display: flex;
@@ -209,11 +211,55 @@ hr {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+}
+.price__counter {
+    position: relative;
+}
+.price__arrow-prev {
+    position: absolute;
+    top: 50%;
+    left: 0%; 
+    transform: translate(-50%, 700%);
+    width: 4rem;
+    height: 4rem;
+    opacity: 0.6;
+    border-radius: 50%;
+    background: silver;
+    font-size: 3rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    cursor: pointer;
+    z-index: 250;
+    transition: 0.4s;
+}
+.price__arrow-next {
+    position: absolute;
+    top: 50%;
+    left: 100%; 
+    transform: translate(-50%, 700%);
+    width: 4rem;
+    height: 4rem;
+    opacity: 0.6;
+    border-radius: 50%;
+    background: silver;
+    z-index: 500;
+    font-size: 3rem;
+    padding-left: 1.25rem;
+    padding-top: 0.5rem;
+    cursor: pointer;
+    z-index: 250;
+    transition: 0.4s;
+}
+.price__arrow-next:hover, .price__arrow-prev:hover {
+    opacity: 0.8;
+    color: black;
+    transition: 0.4s;
 }
 .price__item {
     min-width: 30rem;
     height: 100%;
-    margin-right: 3rem;
+/*     margin-right: 3rem; */ /* без использования свайпера */
     display: flex;
     flex-direction: column;
 }
@@ -535,6 +581,11 @@ hr {
     opacity: 0.8;
     transition: 0.4s;
 }
+
+.swiper-slide {
+    width: 400px;
+}
+
 @media (max-width: 1220px) {
     .header__content, .profile__content, .price__wrapper, .form-question, .portfolio__items, .footer_items {
         padding: 0 3rem 0 3rem;
@@ -723,5 +774,9 @@ hr {
     .footer__text {
         padding-bottom: 2rem;
         font-size: 1.4rem;
+    }
+    .arrow-up {
+        position: relative;
+        left: -10%;
     }
 }

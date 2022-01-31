@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+  />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -121,15 +125,22 @@
             </div>
         </div>
     </section>
+
 <!-- Price Section -->
     <section class="price" id="price">
+
         <div class="container">
-            <div class="price__wrapper">
-                <div class="section__title">
-                    <h2 class="title-text">Прайс</h2>
-                </div>
-                <div class="price__items">
-                    <div class="price__item">
+            <div class="price__counter">
+                <div class="price__arrow-prev fas fa-chevron-left"></div>
+                <div class="price__arrow-next fas fa-chevron-right"></div>
+            </div>
+            <div class="section__title">
+                <h2 class="title-text">Прайс</h2>
+            </div>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+          
+                    <div class="price__item swiper-slide">
                         <div class="item-part__top">
                             <h3 class="top-part__title">Съёмка №1</h3>
                             <hr color="white" size="0.1rem">
@@ -144,7 +155,7 @@
                             <button class="button popup-btn feedback" type="button">Оставить заявку</button>
                         </div>
                     </div>
-                    <div class="price__item">
+                    <div class="price__item swiper-slide">
                         <div class="item-part__top">
                             <h3 class="top-part__title">Съёмка №2</h3>
                             <hr color="white" size="0.1rem">
@@ -160,7 +171,7 @@
                             <button class="button popup-btn feedback" type="button">Оставить заявку</button>
                         </div>
                     </div>
-                    <div class="price__item">
+                    <div class="price__item swiper-slide">
                         <div class="item-part__top">
                             <h3 class="top-part__title">Съёмка №3</h3>
                             <hr color="white" size="0.1rem">
@@ -288,6 +299,8 @@
         </div>
     </div>
     <button class="arrow-up fas fa-chevron-up" type="button"></button>
+    <!-- подключение FontAwesome -->
     <script src="https://kit.fontawesome.com/e70ed3cf41.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 </body>
 </html>

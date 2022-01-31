@@ -4,7 +4,6 @@ export function scroll () {
     const header = document.querySelector('.header__content')
     const footer = document.querySelector('.footer')
     const pageNavLinks = [...Array.from(header.querySelectorAll('li > a')), ...Array.from(footer.querySelectorAll('li > a'))]
-
     const arrowUp = document.querySelector('.arrow-up')
     const logoLeft = header.querySelector('img')
     const arrayUp = [arrowUp, logoLeft]
@@ -29,7 +28,7 @@ export function scroll () {
         arrowUp.style.opacity = '0' ;
         arrowUp.style.zIndex = '-999'; 
     }  
-    
+
     window.addEventListener('scroll', () => {
         if (scrollY >= 600) {
           arrowUp.style.zIndex = '999';

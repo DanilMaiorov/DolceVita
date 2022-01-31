@@ -2,49 +2,39 @@ import { animate } from './helpers';
 
 export function modal () {
 
-    const btns = Array.from(document.querySelectorAll('.popup-btn'))
-    const btnInst = document.querySelector('#inst')
-    const arrBtns = [...btns, btnInst]
-
     const modal = document.querySelector('.popup')
     const modalInst = document.querySelector('.popup-inst')
     const modalOverlay = document.querySelector('.popup-overlay')
-    const arrModals = [modal, modalInst, modalOverlay]
 
-    arrBtns.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault()
-            animate({
-                duration: 300,
-                timing(timeFraction) {
-                return timeFraction;
-                },
-                draw(progress) {
-                    if(e.target.closest('.popup-btn')) {
-                        modal.style.display = 'block'
-                        modal.style.opacity = progress; 
-                        modalOverlay.style.display = 'block'
-                        modalOverlay.style.opacity = progress; 
-                    } else {
-                        modalInst.style.display = 'block'
-                        modalInst.style.opacity = progress; 
-                        modalOverlay.style.display = 'block'
-                        modalOverlay.style.opacity = progress; 
-                    }
-                }
-            });
+    const body = document.querySelector('body')
+
+    function animation (x, y) {
+        animate({
+            duration: 300,
+            timing(timeFraction) {
+            return timeFraction
+            },
+            draw(progress) {
+                    x.style.display = 'block'
+                    x.style.opacity = progress; 
+                    y.style.display = 'block'
+                    y.style.opacity = progress 
+            }
         })
-    })
-    arrModals.forEach(item => {
-        item.addEventListener('click', (e) => {
-            console.log(e.target);
+    }
+    function openModal () { 
+        animation(modal, modalOverlay)
+    }
+    function openInstModal () {
+        animation(modalInst, modalOverlay)
+    } 
+    function closeModal () {
             animate({
                 duration: 300,
                 timing(timeFraction) {
-                return timeFraction;
+                return timeFraction
                 },
                 draw(progress) {
-                    if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close') || e.target.closest('.popup-inst__btn')) {
                     modal.style.opacity = 1 - progress; 
                     modalOverlay.style.opacity = 1 - progress; 
                     modalInst.style.opacity = 1 - progress; 
@@ -52,10 +42,20 @@ export function modal () {
                             modal.style.display = 'none'
                             modalOverlay.style.display = 'none' 
                             modalInst.style.display = 'none'
-                        }, 300);
-                    }
+                        }, 300)
                 } 
             })
-        }) 
-    }) 
+    }
+    body.addEventListener('click', (e) => {
+        if(e.target.closest('.popup-btn')) {
+            openModal()
+        }
+        if(e.target.id === 'inst') {
+            e.preventDefault()
+            openInstModal()
+        }
+        if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close') || e.target.closest('.popup-inst__btn')) {
+            closeModal()
+        }
+    })
 }
