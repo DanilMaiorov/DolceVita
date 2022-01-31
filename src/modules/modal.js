@@ -5,7 +5,6 @@ export function modal () {
     const modal = document.querySelector('.popup')
     const modalInst = document.querySelector('.popup-inst')
     const modalOverlay = document.querySelector('.popup-overlay')
-
     const body = document.querySelector('body')
 
     function animation (x, y) {
@@ -47,7 +46,8 @@ export function modal () {
             })
     }
     body.addEventListener('click', (e) => {
-        if(e.target.closest('.popup-btn')) {
+        if(e.target.closest('.popup-btn') && e.target.parentNode.parentNode.closest('.swiper-slide-active')) {
+            e.target.style.cursor = 'pointer'
             openModal()
         }
         if(e.target.id === 'inst') {

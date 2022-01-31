@@ -219,7 +219,7 @@ hr {
 .price__arrow-prev {
     position: absolute;
     top: 50%;
-    left: 0%; 
+    left: 1.5%; 
     transform: translate(-50%, 700%);
     width: 4rem;
     height: 4rem;
@@ -236,7 +236,7 @@ hr {
 .price__arrow-next {
     position: absolute;
     top: 50%;
-    left: 100%; 
+    left: 98.5%; 
     transform: translate(-50%, 700%);
     width: 4rem;
     height: 4rem;
@@ -362,6 +362,11 @@ hr {
     font-size: 1.4rem;
     margin-right: 2rem;
     resize: none;
+}
+#form1-message {
+    height: 18rem;
+    padding-top: 1.5rem;
+    padding-bottom: 17.3rem;
 }
 .form-question__left {
     flex-basis: 47%;
@@ -602,6 +607,14 @@ hr {
     iframe {
         width: 50rem;
     }
+    .price__arrow-next {
+        opacity: 0;
+        z-index: -10;
+    }
+    .price__arrow-prev {
+        opacity: 0;
+        z-index: -10;
+    }
 }
 @media (max-width: 992px) {
     .header__wrapper {
@@ -779,4 +792,5 @@ hr {
         position: relative;
         left: -10%;
     }
+
 }

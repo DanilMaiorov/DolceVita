@@ -22,7 +22,7 @@ export function scroll () {
     })
 
     if (scrollY > 600) {
-        arrowUp.style.opacity = '0.8';
+        arrowUp.style.opacity = '0.6';
         arrowUp.style.zIndex = '999';
     } else {
         arrowUp.style.opacity = '0' ;
@@ -32,7 +32,7 @@ export function scroll () {
     window.addEventListener('scroll', () => {
         if (scrollY >= 600) {
           arrowUp.style.zIndex = '999';
-          arrowUp.style.opacity = '0.8';
+          arrowUp.style.opacity = '0.6';
           arrowUp.style.transition = '0.6s opacity'
           arrowUp.style.display = 'block';
       } else {
@@ -62,7 +62,7 @@ export function scroll () {
                     return timeFraction
                     },
                     draw(progress) {
-                        item.style.opacity = 0.8 - progress*0.2
+                        item.style.opacity = 0.6 + progress*0.2
                     }
                 })
             })
@@ -73,7 +73,7 @@ export function scroll () {
                     return timeFraction
                     },
                     draw(progress) {
-                        item.style.opacity = 0.6 + progress*0.2
+                        item.style.opacity = 0.8 - progress*0.2
                     }
                 })
             })

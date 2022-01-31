@@ -15,3 +15,4 @@ export function animate ({timing, draw, duration}) {
         }
     });
 }
+

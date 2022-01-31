@@ -17,6 +17,4 @@ export function priceSlider () {
         prevEl: '.price__arrow-prev',
       },
     });
-
-    console.log(document.querySelector('.price__arrow-next'));
 }

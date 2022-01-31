@@ -203,12 +203,12 @@
                                 <h2 class="title-text center">Обратная связь</h2>
                             </div>
                             <div class="form">
-                                <form class="question__form" action="#">
+                                <form id="form1" class="question__form" action="#">
                                     <div class="input form__inputs">    
                                         <input class="input form__input" type="text" placeholder="Введите ваше имя">
                                         <input class="input form__input" type="text" placeholder="Введите ваш E-Mail">
                                     </div>
-                                    <textarea class="input form__input form__textarea" name="" id="" cols="30" rows="10" placeholder="Ваше сообщение"></textarea>
+                                    <input id="form1-message" class="input form__input " name="" id="" cols="30" rows="10" placeholder="Ваше сообщение">
                                     <button class="button form__button" type="button">Отправить сообщение</button>
                                 </form>
                             </div>
@@ -278,7 +278,7 @@
             <button class="popup__close close-main-form fas fa-times"></button>
             <div class="popup__title">Мы перезвоним вам в ближайшее время</div>
             <div class="popup__content">
-                <form class="form-popup" action="">
+                <form id="form2" class="form-popup" action="">
                     <input class="form-input" type="name" placeholder="Введите ваше имя*" required>
                     <input class="form-input" type="tel" placeholder="Ведите ваш телефон*" required>
                     <input class="form-input" type="email" placeholder="Введите ваш E-Mail">
