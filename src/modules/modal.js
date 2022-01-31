@@ -37,13 +37,14 @@ export function modal () {
     })
     arrModals.forEach(item => {
         item.addEventListener('click', (e) => {
+            console.log(e.target);
             animate({
                 duration: 300,
                 timing(timeFraction) {
                 return timeFraction;
                 },
                 draw(progress) {
-                    if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close')) {
+                    if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close') || e.target.closest('.popup-inst__btn')) {
                     modal.style.opacity = 1 - progress; 
                     modalOverlay.style.opacity = 1 - progress; 
                     modalInst.style.opacity = 1 - progress; 

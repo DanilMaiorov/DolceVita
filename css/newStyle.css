@@ -486,9 +486,9 @@ hr {
 .close-main-form {
     left: 92%;
 }
-.popup-inst__btn {
-    margin-top: 3rem;
-}
+ .popup-inst__img {
+    margin-bottom: 3rem;
+} 
 .popup-overlay {
     display: none;
 	position: fixed;
