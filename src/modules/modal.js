@@ -1,26 +1,60 @@
-export const modal = () => {
+import { animate } from './helpers';
+
+export function modal () {
+
+    const btns = Array.from(document.querySelectorAll('.popup-btn'))
+    const btnInst = document.querySelector('#inst')
+    const arrBtns = [...btns, btnInst]
+
     const modal = document.querySelector('.popup')
-
-    
-    const modalOpenBtn = document.querySelectorAll('.feedback')
+    const modalInst = document.querySelector('.popup-inst')
     const modalOverlay = document.querySelector('.popup-overlay')
-    const modalClose = document.querySelectorAll('.popup__close')
-    const qwe = document.querySelector('#inst')
-    modalOpenBtn.forEach(item => {
-    item.addEventListener('click', () => {
-        modal.style.display = 'block'
-        modal1.style.display = 'block'
-        modalOverlay.style.display = 'block'
-        modalClose.forEach(item => {
-            item.addEventListener('click', () => {
-                modal.style.display = 'none'
-                modalOverlay.style.display = 'none'
+    const arrModals = [modal, modalInst, modalOverlay]
 
-            })
+    arrBtns.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault()
+            animate({
+                duration: 300,
+                timing(timeFraction) {
+                return timeFraction;
+                },
+                draw(progress) {
+                    if(e.target.closest('.popup-btn')) {
+                        modal.style.display = 'block'
+                        modal.style.opacity = progress; 
+                        modalOverlay.style.display = 'block'
+                        modalOverlay.style.opacity = progress; 
+                    } else {
+                        modalInst.style.display = 'block'
+                        modalInst.style.opacity = progress; 
+                        modalOverlay.style.display = 'block'
+                        modalOverlay.style.opacity = progress; 
+                    }
+                }
+            });
         })
     })
-})
-    console.log(modalOpenBtn);
-    console.log(modal);
-
+    arrModals.forEach(item => {
+        item.addEventListener('click', (e) => {
+            animate({
+                duration: 300,
+                timing(timeFraction) {
+                return timeFraction;
+                },
+                draw(progress) {
+                    if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close')) {
+                    modal.style.opacity = 1 - progress; 
+                    modalOverlay.style.opacity = 1 - progress; 
+                    modalInst.style.opacity = 1 - progress; 
+                        setTimeout(() => {
+                            modal.style.display = 'none'
+                            modalOverlay.style.display = 'none' 
+                            modalInst.style.display = 'none'
+                        }, 300);
+                    }
+                } 
+            })
+        }) 
+    }) 
 }
