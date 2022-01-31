@@ -11,7 +11,7 @@ html, body {
     background: rgb(247, 233, 237);
     overflow-x: hidden;
     user-select: none;
-    height: 100%;
+    height: auto;
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -188,6 +188,7 @@ hr {
     font-size: 2.2rem;
     line-height: 136%;
     padding-bottom: 2rem;
+    padding-right: 0.9rem;  
     letter-spacing: 0.1rem;
 }
 .content-profile__text:last-child {
@@ -515,6 +516,24 @@ hr {
     opacity: 0.6;
     padding-bottom: 0.4rem;
     padding-top: 0.4rem;
+}
+/* стили Стрелки */
+.arrow-up {
+    padding: 1rem;
+    font-size: 4rem;
+    border: none;
+    position: fixed;
+    z-index: 500;
+    bottom: 4rem;
+    right: 4rem;
+    opacity: 0.6;
+    background: silver;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.arrow-up:hover {
+    opacity: 0.8;
+    transition: 0.4s;
 }
 @media (max-width: 1220px) {
     .header__content, .profile__content, .price__wrapper, .form-question, .portfolio__items, .footer_items {
