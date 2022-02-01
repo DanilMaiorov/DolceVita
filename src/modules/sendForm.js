@@ -10,7 +10,6 @@ export function sendForm ({ formId, someElem = []}) {
     const errorText = 'Ошибка...'
     const successText = 'Спасибо! Наш менеджер с вами свяжется'
     
-
     const nameInput = form.querySelector('.name-input')
     const emailInput = form.querySelector('.email-input')
     const phoneInput = form.querySelector('.phone-input') 

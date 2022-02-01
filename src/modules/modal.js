@@ -7,6 +7,9 @@ export function modal () {
     const modalOverlay = document.querySelector('.popup-overlay')
     const body = document.querySelector('body')
 
+    const qwe = document.querySelectorAll('.top-part__title')
+    const par = document.querySelector('.par')
+
     function animation (x, y) {
         animate({
             duration: 300,
@@ -23,6 +26,10 @@ export function modal () {
     }
     function openModal () { 
         animation(modal, modalOverlay)
+        qwe.forEach((item, index) => {
+            console.log([0]);
+            par.insertAdjacentHTML('beforeend', `<div>${item.textContent}</div>`)
+        })
     }
     function openInstModal () {
         animation(modalInst, modalOverlay)
