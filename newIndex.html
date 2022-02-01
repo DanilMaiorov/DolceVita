@@ -205,11 +205,11 @@
                             <div class="form">
                                 <form id="form1" class="question__form" action="#">
                                     <div class="input form__inputs">    
-                                        <input class="input form__input" type="text" placeholder="Введите ваше имя">
-                                        <input class="input form__input" type="text" placeholder="Введите ваш E-Mail">
+                                        <input class="input form__input name-input" name="name" type="text" placeholder="Введите ваше имя">
+                                        <input class="input form__input phone-input" name="phone" type="text" placeholder="Введите ваш телефон">
                                     </div>
-                                    <input id="form1-message" class="input form__input " name="" id="" cols="30" rows="10" placeholder="Ваше сообщение">
-                                    <button class="button form__button" type="button">Отправить сообщение</button>
+                                    <input id="form1-message" class="input form__input " name="message" placeholder="Ваше сообщение">
+                                    <button class="button form__button" type="submit">Отправить сообщение</button>
                                 </form>
                             </div>
                         </div>
@@ -279,9 +279,9 @@
             <div class="popup__title">Мы перезвоним вам в ближайшее время</div>
             <div class="popup__content">
                 <form id="form2" class="form-popup" action="">
-                    <input class="form-input" type="name" placeholder="Введите ваше имя*" required>
-                    <input class="form-input" type="tel" placeholder="Ведите ваш телефон*" required>
-                    <input class="form-input" type="email" placeholder="Введите ваш E-Mail">
+                    <input class="form-input name-input" type="name" name="name" placeholder="Введите ваше имя*" required>
+                    <input class="form-input phone-input" type="tel" name="phone" placeholder="Ведите ваш телефон*" required>
+                    <input class="form-input email-input" type="email" name="email" placeholder="Введите ваш E-Mail">
                     <p><span class="red">*</span>- поля, обязательные для заполнения</p>
                     <button class="button form__button">Отправить</button>
                 </form>

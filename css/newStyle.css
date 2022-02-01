@@ -325,7 +325,8 @@ hr {
 }
 .price__individual {
     font-size: 1.6rem;
-    padding-top: 1rem;
+    padding-top: 2rem;
+    text-align: center;
 }
 .question__cover {
     background: linear-gradient( rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8) ), url(/imgNew/main-cover.jpg);

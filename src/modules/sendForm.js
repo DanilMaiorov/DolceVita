@@ -1,5 +1,6 @@
-//import { sendService } from './sendService';
+import { sendService } from './sendService';
 import { validation } from './validation';
+
 
 export function sendForm ({ formId, someElem = []}) {
     const form = document.getElementById(formId)
@@ -8,8 +9,32 @@ export function sendForm ({ formId, someElem = []}) {
     const loadText = 'Загрузка...'
     const errorText = 'Ошибка...'
     const successText = 'Спасибо! Наш менеджер с вами свяжется'
+    
 
-    validation()
+    const nameInput = form.querySelector('.name-input')
+    const emailInput = form.querySelector('.email-input')
+    const phoneInput = form.querySelector('.phone-input') 
+    const messageInput = form.querySelector('#form1-message')
+    
+
+    nameInput.addEventListener('change', (e) => {
+        if(/^ [а-яёА-ЯЁa-zA-Z]+/gi.test(e.target.value)) {
+            nameInput.value = e.target.value
+        } else {
+            nameInput.value = e.target.value.replace(/[^а-яёА-ЯЁa-zA-Z ]+/gi, '').replace(/\s+/gi, ' ').replace(/[^а-яёА-ЯЁa-zA-Z ]+$/gi, '').trim()
+        }
+    })
+    if(emailInput) {
+    emailInput.addEventListener('change', (e) => {
+        if(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gi.test(e.target.value)) {
+            emailInput.value = e.target.value 
+        } else {
+            emailInput.value = e.target.value.replace(/^[а-яё]+/gi, '').replace(/[а-яё]+/gi, '').replace(/\s+/, '').replace(/@+/g, '@').trim()
+        }
+    })
+}
+
+    
 
     function submitForm () {
         const formElements = form.querySelectorAll('input')
@@ -29,7 +54,20 @@ export function sendForm ({ formId, someElem = []}) {
                 formbody[elem.id] = element.value
             }
         })
+        if(validation(formElements)) {
+            sendService('https://jsonplaceholder.typicode.com/posts', 'POST', formBody)
+            .then(data => {
+                console.log(data);
+            })
+        }
+        
     }
-    submitForm()
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        submitForm()
+    })
+
+    
 
 }
