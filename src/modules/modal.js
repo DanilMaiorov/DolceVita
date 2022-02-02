@@ -21,7 +21,7 @@ export function modal () {
             font-weight: normal;
             `
         animate({
-            duration: 400,
+            duration: 300,
             timing(timeFraction) {
             return timeFraction
             },

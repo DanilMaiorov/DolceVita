@@ -1,4 +1,7 @@
 export function validation (data) {
+
+    const dataArr = []
+
     let success = true
     let successName = false
     let successEmail = false
@@ -14,18 +17,6 @@ export function validation (data) {
             successEmail = /[a-z0-9~*!'_\-\.]*@[\w-]+\.\w{2,4}/gi.test(input.value)
             console.log(successEmail);
         }
-/*         if(input.closest('[name=emailphone]')) {
-            let testInput = input.closest('[name=emailphone]')
-            if(testInput.value.includes('@')) {
-            successEmail = /[a-z0-9~*!'_\-\.]*@[\w-]+\.\w{2,4}/gi.test(input.value)
-            alert('тест на имейл')
-            console.log(successEmail);
-            } else {
-                successPhone = /^[+]?[0-9]{6,16}$/.test(input.value)
-                console.log(successPhone);
-                alert('тест на телефон')
-            }
-        } */
         if(input.closest('[name=phone]')) {
             successPhone = /^[+]?[0-9]{6,16}$/.test(input.value)
             console.log(successPhone);
@@ -35,23 +26,25 @@ export function validation (data) {
             console.log(successMessage);
         }
     })
-    if(successName === '' || successPhone === '' || successEmail === '' || successMessage === '') {
+
+    if(successName === '' || successPhone === '' || /* successEmail === '' || */ successMessage === '') {
+        //debugger
         success = false
     }
-    if (successName && successPhone && successEmail) {
-       // debugger
-            success = true
-            console.log('true, отправка из модалки успешна');
-    } else if (successName && (successEmail || successPhone) && successMessage) {
-       // debugger
+    if (successName && successPhone /* && successEmail */) {
+        //debugger
+        success = true
+        console.log('true, отправка из модалки успешна');
+    } else if (successName && successPhone && successMessage) {
         success = true
         console.log('true, отправка произошла из второй формы');
     } 
     else {
-      //  debugger
+        //debugger
         success = false
         console.log('false чтото пошло не так');
     }
     return success
+   /*  }) */
 }
 

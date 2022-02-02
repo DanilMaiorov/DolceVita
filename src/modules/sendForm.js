@@ -8,22 +8,24 @@ export function sendForm ({ formId, someElem = []}) {
     const form = document.getElementById(formId)
 
     const statusBlock = document.createElement('div') 
-    const successImg = document.createElement('img') 
-
-    const loadText = 'Загрузка...'
-    const errorText = 'Ошибка...'
+    statusBlock.classList.add('status-block')
     const successText = 'Спасибо, Ваша заявка принята! Наш менеджер с вами свяжется'
+    const successImg = document.createElement('img') 
+    const loadText = 'Загрузка...'
+    const loadImg = document.createElement('img')
+
+    const errorText = 'Ошибка...'
+    
     
     const nameInput = form.querySelector('.name-input')
     const emailInput = form.querySelector('.email-input')
     const phoneInput = form.querySelector('.phone-input') 
     const messageInput = form.querySelector('#form1-message')
 
-    let popupTitle = document.querySelector('.popup__title')
+    const popupTitle = document.querySelector('.popup__title')
 
     const popupContent = document.querySelector('.popup__wrapper')
 
-    const body = document.querySelector('body')
 
     nameInput.addEventListener('change', (e) => {
         if(/^ [а-яёА-ЯЁa-zA-Z]+/gi.test(e.target.value)) {
@@ -44,6 +46,7 @@ export function sendForm ({ formId, someElem = []}) {
 
     function submitForm () {
         const formElements = form.querySelectorAll('input')
+        console.log(formElements);
         const formData = new FormData(form)
         const formBody = {}
         
@@ -59,11 +62,21 @@ export function sendForm ({ formId, someElem = []}) {
             }
         })
         popupTitle.style.display = 'none'
-        form.style.display = 'none'
+        if(form.id !== 'form1') {
+            form.style.display = 'none'
+        }
 
         popupContent.append(statusBlock)
-
         statusBlock.textContent = loadText
+        loadImg.src = './imgNew/ZKZg.gif'
+        statusBlock.append(loadImg)
+        loadImg.style.cssText = `
+        width: 3rem;
+        margin: auto;
+        padding-top: 2rem;
+        margin-bottom: -1rem;
+        display: block;
+        `
         statusBlock.style.cssText = `
             text-align: center;
             color: #000;
@@ -76,7 +89,6 @@ export function sendForm ({ formId, someElem = []}) {
             sendService('https://jsonplaceholder.typicode.com/posts', 'POST', formBody)
             .then(data => {
                 statusBlock.textContent = successText
-
                 statusBlock.style.cssText = `
                     text-align: center;
                     color: #32C671;
@@ -90,20 +102,15 @@ export function sendForm ({ formId, someElem = []}) {
                     margin: auto;
                     padding-top: 3rem;
                     display: block;
-                    pointer-events: none; 
-                    cursor: default;
                     `
                     if(successText) {
                         let timerId = setTimeout(() => {
                             function closeForm () {
                                 const modal = document.querySelector('.popup')
-                                modal.style.cssText = `
-                                pointer-events: none; 
-                                cursor: default;`
                                 const modalOverlay = document.querySelector('.popup-overlay')
                                 const par = document.querySelector('.par')
                                 animate({
-                                    duration: 500,
+                                    duration: 300,
                                     timing(timeFraction) {
                                     return timeFraction
                                     },
@@ -118,37 +125,61 @@ export function sendForm ({ formId, someElem = []}) {
                                                 successImg.style.display = 'none'
                                                 statusBlock.style.display = 'none'
                                                 par.innerHTML = par.textContent
-                                            }, 500)
-                                             body.addEventListener('click', (e) => {
-                                                if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close')) {
-                                                clearTimeout(timerId)
-                                                    successImg.style.display = 'none'
-                                                    statusBlock.style.display = 'none'
-                                                    modal.style.display = 'none'
-                                                }
-                                            }) 
+                                            }, 300)
+                                            window.addEventListener('click', (e) => { 
+                                                if (e.target.closest('.feedback')) {
+                                                    successImg.remove()
+                                                    statusBlock.remove()
+                                                    clearTimeout(timerId)
+                                                } 
+                                                if (e.target.closest('.status-block') || e.target.closest('.popup-wrapper')) {
+                                                    successImg.style.display = 'block'
+                                                    statusBlock.style.display = 'block'
+                                                } 
+                                            })   
                                     } 
                                 })
                             }
                         closeForm()
-                        
-                        }, 1000);  
-                        body.addEventListener('click', (e) => { 
-                            if(!e.target.closest('.popup-overlay') || !e.target.closest('.popup__close')) {
-                            clearTimeout(timerId)
-                            successImg.style.display = 'none'
-                            statusBlock.style.display = 'none'
-                            
-                            }
-                        })
+                        }, 900);  
+                        window.addEventListener('click', (e) => { 
+                            if (e.target.closest('.feedback')) {
+                                successImg.remove()
+                                statusBlock.remove()
+                                clearTimeout(timerId)
+                            } 
+                            if (e.target.closest('.status-block') || e.target.closest('.popup-wrapper')) {
+                                successImg.style.display = 'block'
+                                statusBlock.style.display = 'block'
+                            } 
+                        })  
                     }
+                    form.reset()
+            }).catch(error => {
+                statusBlock.textContent = errorText
             })
+        } else {
+            let newData = Array.from(formElements)
+            newData.pop()
+        
+            newData.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    if(e.target.value === '') {
+                        input.style.background = 'rgb(247, 233, 237)'
+                    } else {
+                        input.style.background = 'white'
+                    }
+                })
+            input.style.background = 'rgb(247, 233, 237)'
+            })
+            popupTitle.style.display = 'block'
+            form.style.display = 'block'
+            statusBlock.style.paddingTop = '1rem'
+            statusBlock.style.color = '#ed4e4e'
+            statusBlock.textContent = 'Заполните, пожалуйста, все обязательные поля'
         }
-        form.reset()
-
+        
     }
-
-
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         submitForm()
