@@ -364,6 +364,18 @@ hr {
     margin-right: 2rem;
     resize: none;
 }
+.insert-input {
+    font-size: 1.4rem;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    background: rgb(247, 233, 237);
+    padding: 0.8rem 0 0.8rem 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: default;
+    outline: none;
+}
 #form1-message {
     height: 18rem;
     padding-top: 1.5rem;
@@ -493,9 +505,10 @@ hr {
 .form-popup {
     display: flex;
     flex-direction: column;
-    width: 35rem;
+    min-width: 35rem;
 }
 .form-input {
+    width: 100%;
     padding: 1rem 2rem 1rem 2rem;
     font-size: 1.6rem;
     border: 0.1rem solid #E3E3E4;
@@ -591,6 +604,11 @@ hr {
 .swiper-slide {
     width: 400px;
 }
+/* .success-img {
+    margin: auto;
+    padding-top: 3rem;
+    display: none;
+} */
 
 @media (max-width: 1220px) {
     .header__content, .profile__content, .price__wrapper, .form-question, .portfolio__items, .footer_items {

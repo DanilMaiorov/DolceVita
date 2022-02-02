@@ -39,16 +39,16 @@ export function validation (data) {
         success = false
     }
     if (successName && successPhone && successEmail) {
-        debugger
+       // debugger
             success = true
             console.log('true, отправка из модалки успешна');
     } else if (successName && (successEmail || successPhone) && successMessage) {
-        debugger
+       // debugger
         success = true
         console.log('true, отправка произошла из второй формы');
     } 
     else {
-        debugger
+      //  debugger
         success = false
         console.log('false чтото пошло не так');
     }
