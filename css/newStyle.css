@@ -378,8 +378,9 @@ hr {
 }
 #form1-message {
     height: 18rem;
-    padding-top: 1.5rem;
-    padding-bottom: 17.3rem;
+    padding-top: 1rem;
+    padding-bottom: 17.6rem;
+    overflow: hidden;
 }
 .form-question__left {
     flex-basis: 47%;

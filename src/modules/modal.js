@@ -12,9 +12,6 @@ export function modal () {
     const form = document.querySelector('.form-popup')
     const popupTitle = document.querySelector('.popup__title')
 
-
-    
-
     function animation (x, y) {
         form.style.display = 'block'
         popupTitle.textContent = 'Мы перезвоним вам в ближайшее время!'

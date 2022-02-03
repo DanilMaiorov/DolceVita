@@ -43,19 +43,18 @@ export function sendForm ({ formId, someElem = [] }) {
             }
         })
     }
-/*     phoneInput.addEventListener('blur', (e) => {
-        if(/[\d]{\+}/g.test(e.target.value)) {
+     phoneInput.addEventListener('blur', (e) => {
+        if(/(\+7|8)[(]?(\d{3})[)]?(\d{3})[-]?(\d{2})[-]?(\d{2})/g.test(e.target.value)) {
             phoneInput.value = e.target.value
         } else {
-            phoneInput.value = e.target.value.replace(/[^\d+\-]+/g, '').replace(/^\++/g, '+').replace(/^\-+/g, '').replace(/\-+/g, '-')
-            .replace(/\++/g, '+').trim()
+            phoneInput.value = e.target.value.replace(/[а-яa-z]+/g, '').replace(/\++/g, '+').replace(/\-+/g, '-').replace(/[^\d\(\)\-\+]+/g, '').replace(/^[\-\s]+/gm, '').replace(/[\-\s]+$/gm, '')
         }
-    }) */
-
-
-
-
-
+    }) 
+    if(messageInput) {
+    messageInput.addEventListener('blur', (e) => {
+        e.target.value = e.target.value.trim().trim().match(/[а-яёА-ЯЁa-zA-Z0-9 \-\.,;:?!]+/gi);
+    })
+    }
     function remove () {
         successImg.remove()
         statusBlock.remove()
