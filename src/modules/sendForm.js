@@ -9,6 +9,11 @@ export function sendForm ({ formId, someElem = [] }) {
 
     const statusBlock = document.createElement('div') 
         statusBlock.classList.add('status-block')
+    const status = document.createElement('div')  
+
+    const aff = [statusBlock, status]
+
+
     const successText = 'Спасибо, Ваша заявка принята! Наш менеджер с вами свяжется'
     const successImg = document.createElement('img') 
     const loadText = 'Загрузка...'
@@ -25,6 +30,7 @@ export function sendForm ({ formId, someElem = [] }) {
     const popupTitle = document.querySelector('.popup__title')
 
     const popupContent = document.querySelector('.popup__wrapper')
+    const asd = document.querySelector('#form1')
 
     
     nameInput.addEventListener('blur', (e) => {
@@ -50,14 +56,15 @@ export function sendForm ({ formId, someElem = [] }) {
             phoneInput.value = e.target.value.replace(/[а-яa-z]+/g, '').replace(/\++/g, '+').replace(/\-+/g, '-').replace(/[^\d\(\)\-\+]+/g, '').replace(/^[\-\s]+/gm, '').replace(/[\-\s]+$/gm, '')
         }
     }) 
-    if(messageInput) {
-    messageInput.addEventListener('blur', (e) => {
-        e.target.value = e.target.value.trim().trim().match(/[а-яёА-ЯЁa-zA-Z0-9 \-\.,;:?!]+/gi);
+        if(messageInput) {
+            messageInput.addEventListener('blur', (e) => {
+            e.target.value = e.target.value.trim().trim().match(/[а-яёА-ЯЁa-zA-Z0-9 \-\.,;:?!]+/gi);
     })
-    }
+    } 
     function remove () {
         successImg.remove()
         statusBlock.remove()
+        status.remove()
     }
     function submitForm () {
         const formElements = form.querySelectorAll('input')
@@ -76,12 +83,33 @@ export function sendForm ({ formId, someElem = [] }) {
                 formbody[elem.id] = element.value
             }
         })
-        popupTitle.style.display = 'none'
+/*         popupTitle.style.display = 'none'
         if(form.id !== 'form1') {
             form.style.display = 'none'
-        }
+        } */
+
+/*         if(form.id === 'form1') {
+            popupContent.append(statusBlock)
+        } */
+
+        form.append(statusBlock)
         statusBlock.classList.add('status-block')
+        if(validation(formElements)) {
+            sendService('https://jsonplaceholder.typicode.com/posts', 'POST', formBody)
+            .then(data => {                statusBlock.textContent = successText
+                statusBlock.style.color = '#00FA9A'
+                formElements.forEach(input => {
+                    form.reset()
+                })
+            })
+        }
+
+/*         status.classList.add('status-block')
+
         popupContent.append(statusBlock)
+        asd.append(status)
+
+        status.textContent = loadText
         statusBlock.textContent = loadText
         loadImg.src = './imgNew/ZKZg.gif'
         statusBlock.append(loadImg)
@@ -100,6 +128,14 @@ export function sendForm ({ formId, someElem = [] }) {
             display: block;
             font-size: 2rem;
             `
+            status.style.cssText = `
+            text-align: center;
+            color: #000;
+            font-weight: normal;
+            font-size: 2rem;
+            display: block;
+            font-size: 2rem;
+            `
         if(validation(formElements)) {
             sendService('https://jsonplaceholder.typicode.com/posts', 'POST', formBody)
             .then(data => {
@@ -110,6 +146,13 @@ export function sendForm ({ formId, someElem = [] }) {
                     font-weight: bold;
                     font-size: 2rem;
                     `
+                    status.textContent = successText
+                    status.style.cssText = `
+                        text-align: center;
+                        color: #32C671;
+                        font-weight: bold;
+                        font-size: 2rem;
+                        `
                 successImg.src = './imgNew/png-clipart-check-mark-computer-icons-others-miscellaneous-angle.png'
                 statusBlock.append(successImg)
                 successImg.style.cssText = `
@@ -119,7 +162,6 @@ export function sendForm ({ formId, someElem = [] }) {
                     display: block;
                     `
                     if(successText) {
-
                         let timerId = setTimeout(() => {
                             function closeForm () {
                                 const modal = document.querySelector('.popup')
@@ -135,11 +177,13 @@ export function sendForm ({ formId, someElem = [] }) {
                                         modalOverlay.style.opacity = 1 - progress; 
                                         successImg.style.opacity = 1 - progress; 
                                         statusBlock.style.opacity = 1 - progress; 
+                                        status.style.opacity = 1 - progress; 
                                         let timerId = setTimeout(() => {
                                                 modal.style.display = 'none'
                                                 modalOverlay.style.display = 'none' 
                                                 successImg.style.display = 'none'
                                                 statusBlock.style.display = 'none'
+                                                status.style.display = 'none'
                                                 par.innerHTML = par.textContent
                                             }, 300)
                                     } 
@@ -150,17 +194,20 @@ export function sendForm ({ formId, someElem = [] }) {
                         window.addEventListener('click', (e) => { 
                             if (e.target.closest('.feedback')) {
                                 remove()
+                                status.style.display = 'none'
                                 clearTimeout(timerId)
                             } 
                             if (e.target.closest('.status-block') || e.target.closest('.popup-wrapper')) {
                                 successImg.style.display = 'block'
                                 statusBlock.style.display = 'block'
+                                status.style.display = 'none'
                             } 
                         })  
                     }
                     form.reset()
             }).catch(error => {
                 statusBlock.textContent = errorText
+                status.textContent = errorText
             })
         } else {
             let newData = Array.from(formElements)
@@ -178,7 +225,10 @@ export function sendForm ({ formId, someElem = [] }) {
             statusBlock.style.paddingTop = '1rem'
             statusBlock.style.color = '#ed4e4e'
             statusBlock.textContent = 'Заполните, пожалуйста, все обязательные поля'
-        }
+            status.style.paddingTop = '1rem'
+            status.style.color = '#ed4e4e'
+            status.textContent = 'Заполните, пожалуйста, все обязательные поля'
+        } */
         
     }
     form.addEventListener('submit', (e) => {

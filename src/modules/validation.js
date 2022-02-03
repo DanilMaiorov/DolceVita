@@ -28,20 +28,20 @@ export function validation (data) {
     })
 
     if(successName === '' || successPhone === '' ||  (successEmail === '' || successEmail !== '') ||  successMessage === '') {
-        debugger
+        //debugger
         success = false
     }
-    if (successName && successPhone && (successEmail || !successEmail) && !successMessage) {
-        debugger
+    if (successName && successPhone && (successEmail || !successEmail)  && !successMessage ) {
+       // debugger
         success = true
         console.log('true, отправка из модалки успешна');
-     } else if (successName && successPhone && successMessage && (successEmail || !successEmail)) {
-        debugger
+     }/*  else if (successName && successPhone && successMessage && (successEmail || !successEmail) ) {
+       // debugger
         success = true
-        console.log('true, отправка произошла из второй формы');
+        console.log('отправка произошла из второй формы');
     
- }  else {
-        debugger
+ } */  else {
+       // debugger
         success = false
         console.log('false чтото пошло не так');
     }
