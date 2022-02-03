@@ -3,6 +3,7 @@ import { animate } from './helpers';
 export function modal () {
 
     const modal = document.querySelector('.popup')
+
     const modalInst = document.querySelector('.popup-inst')
     const modalOverlay = document.querySelector('.popup-overlay')
     const body = document.querySelector('body')
@@ -11,6 +12,8 @@ export function modal () {
     const form = document.querySelector('.form-popup')
     const popupTitle = document.querySelector('.popup__title')
 
+
+    
 
     function animation (x, y) {
         form.style.display = 'block'
@@ -35,6 +38,12 @@ export function modal () {
     }
      function openModal () { 
         animation(modal, modalOverlay)
+        modal.childNodes[1].childNodes[5].childNodes[1].childNodes.forEach(item => {
+            if(item.tagName == 'INPUT') {
+                item.style.background = 'white'
+            }
+        })
+        form.reset()
     } 
     function openInstModal () {
         animation(modalInst, modalOverlay)

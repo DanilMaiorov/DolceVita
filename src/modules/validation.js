@@ -18,7 +18,7 @@ export function validation (data) {
             console.log(successEmail);
         }
         if(input.closest('[name=phone]')) {
-            successPhone = /^[+]?[0-9]{6,16}$/.test(input.value)
+            successPhone = /(\+7|8)[(]?(\d{3})[)]?(\d{3})[-]?(\d{2})[-]?(\d{2})/g.test(input.value)
             console.log(successPhone);
         }
         if(input.closest('[name=message]')) {
@@ -28,11 +28,11 @@ export function validation (data) {
     })
 
     if(successName === '' || successPhone === '' || /* successEmail === '' || */ successMessage === '') {
-        //debugger
+        debugger
         success = false
     }
     if (successName && successPhone /* && successEmail */) {
-        //debugger
+        debugger
         success = true
         console.log('true, отправка из модалки успешна');
     } else if (successName && successPhone && successMessage) {
@@ -40,11 +40,10 @@ export function validation (data) {
         console.log('true, отправка произошла из второй формы');
     } 
     else {
-        //debugger
+        debugger
         success = false
         console.log('false чтото пошло не так');
     }
     return success
-   /*  }) */
 }
 

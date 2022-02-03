@@ -4,17 +4,17 @@ import { animate } from './helpers';
 import { modal } from './modal';
 
 
-export function sendForm ({ formId, someElem = []}) {
+export function sendForm ({ formId, someElem = [] }) {
     const form = document.getElementById(formId)
 
     const statusBlock = document.createElement('div') 
-    statusBlock.classList.add('status-block')
+        statusBlock.classList.add('status-block')
     const successText = 'Спасибо, Ваша заявка принята! Наш менеджер с вами свяжется'
     const successImg = document.createElement('img') 
     const loadText = 'Загрузка...'
     const loadImg = document.createElement('img')
 
-    const errorText = 'Ошибка...'
+    const errorText = 'Что-то пошло не так..'
     
     
     const nameInput = form.querySelector('.name-input')
@@ -26,8 +26,8 @@ export function sendForm ({ formId, someElem = []}) {
 
     const popupContent = document.querySelector('.popup__wrapper')
 
-
-    nameInput.addEventListener('change', (e) => {
+    
+    nameInput.addEventListener('blur', (e) => {
         if(/^ [а-яёА-ЯЁa-zA-Z]+/gi.test(e.target.value)) {
             nameInput.value = e.target.value
         } else {
@@ -35,7 +35,7 @@ export function sendForm ({ formId, someElem = []}) {
         }
     })
     if(emailInput) {
-        emailInput.addEventListener('change', (e) => {
+        emailInput.addEventListener('blur', (e) => {
             if(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gi.test(e.target.value)) {
                 emailInput.value = e.target.value 
             } else {
@@ -43,7 +43,23 @@ export function sendForm ({ formId, someElem = []}) {
             }
         })
     }
+/*     phoneInput.addEventListener('blur', (e) => {
+        if(/[\d]{\+}/g.test(e.target.value)) {
+            phoneInput.value = e.target.value
+        } else {
+            phoneInput.value = e.target.value.replace(/[^\d+\-]+/g, '').replace(/^\++/g, '+').replace(/^\-+/g, '').replace(/\-+/g, '-')
+            .replace(/\++/g, '+').trim()
+        }
+    }) */
 
+
+
+
+
+    function remove () {
+        successImg.remove()
+        statusBlock.remove()
+    }
     function submitForm () {
         const formElements = form.querySelectorAll('input')
         console.log(formElements);
@@ -65,18 +81,18 @@ export function sendForm ({ formId, someElem = []}) {
         if(form.id !== 'form1') {
             form.style.display = 'none'
         }
-
+        statusBlock.classList.add('status-block')
         popupContent.append(statusBlock)
         statusBlock.textContent = loadText
         loadImg.src = './imgNew/ZKZg.gif'
         statusBlock.append(loadImg)
         loadImg.style.cssText = `
-        width: 3rem;
-        margin: auto;
-        padding-top: 2rem;
-        margin-bottom: -1rem;
-        display: block;
-        `
+            width: 3rem;
+            margin: auto;
+            padding-top: 2rem;
+            margin-bottom: -1rem;
+            display: block;
+            `
         statusBlock.style.cssText = `
             text-align: center;
             color: #000;
@@ -104,6 +120,7 @@ export function sendForm ({ formId, someElem = []}) {
                     display: block;
                     `
                     if(successText) {
+
                         let timerId = setTimeout(() => {
                             function closeForm () {
                                 const modal = document.querySelector('.popup')
@@ -126,17 +143,6 @@ export function sendForm ({ formId, someElem = []}) {
                                                 statusBlock.style.display = 'none'
                                                 par.innerHTML = par.textContent
                                             }, 300)
-                                            window.addEventListener('click', (e) => { 
-                                                if (e.target.closest('.feedback')) {
-                                                    successImg.remove()
-                                                    statusBlock.remove()
-                                                    clearTimeout(timerId)
-                                                } 
-                                                if (e.target.closest('.status-block') || e.target.closest('.popup-wrapper')) {
-                                                    successImg.style.display = 'block'
-                                                    statusBlock.style.display = 'block'
-                                                } 
-                                            })   
                                     } 
                                 })
                             }
@@ -144,8 +150,7 @@ export function sendForm ({ formId, someElem = []}) {
                         }, 900);  
                         window.addEventListener('click', (e) => { 
                             if (e.target.closest('.feedback')) {
-                                successImg.remove()
-                                statusBlock.remove()
+                                remove()
                                 clearTimeout(timerId)
                             } 
                             if (e.target.closest('.status-block') || e.target.closest('.popup-wrapper')) {
@@ -161,16 +166,13 @@ export function sendForm ({ formId, someElem = []}) {
         } else {
             let newData = Array.from(formElements)
             newData.pop()
-        
             newData.forEach(input => {
                 input.addEventListener('input', (e) => {
-                    if(e.target.value === '') {
+                    input.style.background = 'white'
+                    if(!e.target.closest('.email-input') && e.target.value === '') {
                         input.style.background = 'rgb(247, 233, 237)'
-                    } else {
-                        input.style.background = 'white'
                     }
                 })
-            input.style.background = 'rgb(247, 233, 237)'
             })
             popupTitle.style.display = 'block'
             form.style.display = 'block'
