@@ -3,30 +3,25 @@ import { validation } from './validation';
 import { animate } from './helpers';
 
 export function sendForm ({ formId, someElem = [] }) {
-    const form = document.getElementById(formId)
+    const form = document.getElementById(formId),
+          statusBlock = document.createElement('div'), 
+          successText = 'Спасибо, Ваша заявка принята! Наш менеджер с вами свяжется',
+          successImg = document.createElement('img'),
+          loadText = 'Загрузка...',
+          loadImg = document.createElement('img'),
+          errorText = 'Что-то пошло не так..',
+          errorImg = document.createElement('img'),
+          nameInput = form.querySelector('.name-input'),
+          emailInput = form.querySelector('.email-input'),
+          phoneInput = form.querySelector('.phone-input'),
+          messageInput = form.querySelector('#form1-message'),
+          popupTitle = document.querySelector('.popup__title'),
+          popupContent = document.querySelector('.popup__wrapper'),
+          modal = document.querySelector('.popup'),
+          modalOverlay = document.querySelector('.popup-overlay'),
+          par = document.querySelector('.par')
 
-    const statusBlock = document.createElement('div') 
-        statusBlock.classList.add('status-block')
-
-    const successText = 'Спасибо, Ваша заявка принята! Наш менеджер с вами свяжется'
-    const successImg = document.createElement('img') 
-    const loadText = 'Загрузка...'
-    const loadImg = document.createElement('img')
-    const errorText = 'Что-то пошло не так..'
-    const errorImg = document.createElement('img')
-    
-    const nameInput = form.querySelector('.name-input')
-    const emailInput = form.querySelector('.email-input')
-    const phoneInput = form.querySelector('.phone-input') 
-    const messageInput = form.querySelector('#form1-message')
-
-    const popupTitle = document.querySelector('.popup__title')
-    const popupContent = document.querySelector('.popup__wrapper')
-
-    const modal = document.querySelector('.popup')
-    const modalOverlay = document.querySelector('.popup-overlay')
-    const par = document.querySelector('.par')
-    
+    statusBlock.classList.add('status-block')
     nameInput.addEventListener('blur', (e) => {
         if(/^ [а-яёА-ЯЁa-zA-Z]+/gi.test(e.target.value)) {
             nameInput.value = e.target.value

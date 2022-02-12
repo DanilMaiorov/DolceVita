@@ -10,7 +10,7 @@ html, body {
     background: rgb(247, 233, 237);
     overflow-x: hidden;
     user-select: none;
-    height: 100%;
+    height: auto;
     min-width: 32rem;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -24,6 +24,7 @@ hr {
 .container {
     margin: 0 auto;
     width: 100%;
+    height: 100%;
     max-width: 1200px;
     z-index: 800;
 }
@@ -99,6 +100,7 @@ hr {
 .portfolio {
     padding-bottom: 3.8rem;
     padding-top: 8.2rem;
+    height: 100%;
 }
 .portfolio__wrapper {
     display: flex;
@@ -587,6 +589,7 @@ hr {
     background: silver;
     cursor: pointer;
     transition: 0.4s;
+    display: none;
 }
 .arrow-up:hover {
     opacity: 0.8;
@@ -807,10 +810,11 @@ hr {
         padding-bottom: 2rem;
         font-size: 1.4rem;
     }
-/*     .arrow-up {
+    .arrow-up {
+        display: block;
         position: relative;
-        left: -10%;
-    } */
+        left: -20%;
+    } 
     .header__burger {
         width: 100%;
         height: 100%;
@@ -867,9 +871,6 @@ hr {
     .question__wrapper {
         padding: 0 2rem;
     }
-    .header__wrapper {
-        height: 5rem;
-    }
     .portfolio__items {
         padding-right: 2rem;
         justify-content: space-evenly;
@@ -903,11 +904,12 @@ hr {
     .question__form {
         min-width: 100%;
     }
+
+    .footer__item:not(:first-child) {
+        padding-top: 5rem;
+    }
     .footer__item:first-child {
-        position: relative;
-        top: 0; 
-        left: 0; 
-        transform: translateX(0%);
+        display: none;
     }
     .footer__item {
         padding-top: 2rem;
@@ -916,7 +918,7 @@ hr {
         padding-top: 0;
     }
     .footer__item-list {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         text-align: center;
     }
@@ -924,20 +926,16 @@ hr {
         padding-left: 0;
     }
     .footer_items {
-        flex-direction: column;
+        flex-direction: row;
     }
     .footer__item-list {
         padding-left: 0;
     }
     .footer__items-logo {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         width: 50%;
-    }
-    .arrow-up {
-        position: relative;
-        right: 20%;
     }
 }
 @media (max-width: 375px) {
