@@ -135,7 +135,7 @@ export function sendForm ({ formId, someElem = [] }) {
             font-size: 2rem;
             `
         if(validation(formElements)) {
-            sendService('https://jsonplaceholder.typicode.com/posts', 'POST', formBody)
+            sendService('sendmail.php', 'POST', formBody)
             .then(data => {                
                 statusBlock.textContent = successText
                 statusBlock.style.cssText = `

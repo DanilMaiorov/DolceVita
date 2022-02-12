@@ -228,7 +228,7 @@
                                 <h2 class="title-text center">Обратная связь</h2>
                             </div>
                             <div class="form">
-                                <form id="form1" class="question__form" action="#">
+                                <form id="form1" class="question__form" action="sendmail.php" method="POST">
                                     <div class="input form__inputs">    
                                         <input class="input form__input name-input" name="name" type="text" placeholder="Введите ваше имя" required>
                                         <input class="input form__input phone-input" name="phone" type="text" placeholder="Введите ваш телефон" required>
@@ -304,7 +304,7 @@
             <button class="popup__close close-main-form fas fa-times"></button>
             <div class="popup__title"></div>
             <div class="popup__content">
-                <form id="form2" class="form-popup" action="">
+                <form id="form2" class="form-popup" action="sendmail.php" method="POST">
                     <input class="form-input name-input" type="name" name="name" placeholder="Введите ваше имя*" required>
                     <input class="form-input phone-input" type="tel" name="phone" placeholder="Введите ваш телефон*" >
                     <input class="form-input email-input" type="email" name="email" placeholder="Введите ваш E-Mail">
