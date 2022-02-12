@@ -1,9 +1,9 @@
 import { animate } from './helpers';
+import { disableScrolling } from './helpers';
 
 export function modal () {
 
     const modal = document.querySelector('.popup')
-
     const modalInst = document.querySelector('.popup-inst')
     const modalOverlay = document.querySelector('.popup-overlay')
     const body = document.querySelector('body')
@@ -11,6 +11,10 @@ export function modal () {
     const par = document.querySelector('.par')
     const form = document.querySelector('.form-popup')
     const popupTitle = document.querySelector('.popup__title')
+    const arrowsPrev = document.querySelector('.price__arrow-prev')
+    const arrowsNext = document.querySelector('.price__arrow-next')
+    const arrows = [arrowsPrev, arrowsNext]
+    console.log(arrows);
 
     function animation (x, y) {
         form.style.display = 'block'
@@ -41,28 +45,39 @@ export function modal () {
             }
         })
         form.reset()
+        arrows.forEach(item => {
+            item.style.display = 'none'
+        })
+        disableScrolling()
     } 
     function openInstModal () {
         animation(modalInst, modalOverlay)
+        body.style.overflow = 'hidden'
+        body.style.zIndex = '1000'
+        disableScrolling()
     } 
     function closeModal () {
-            animate({
-                duration: 400,
-                timing(timeFraction) {
+        animate({
+            duration: 400,
+            timing(timeFraction) {
                 return timeFraction
-                },
-                draw(progress) {
-                    modal.style.opacity = 1 - progress; 
-                    modalOverlay.style.opacity = 1 - progress; 
-                    modalInst.style.opacity = 1 - progress; 
-                        setTimeout(() => {
-                            modal.style.display = 'none'
-                            modalOverlay.style.display = 'none' 
-                            modalInst.style.display = 'none'
-                            par.innerHTML = par.textContent
-                        }, 400)
-                } 
-            })
+            },
+            draw(progress) {
+                modal.style.opacity = 1 - progress;
+                modalOverlay.style.opacity = 1 - progress;
+                modalInst.style.opacity = 1 - progress;
+                setTimeout(() => {
+                    modal.style.display = 'none'
+                    modalOverlay.style.display = 'none'
+                    modalInst.style.display = 'none'
+                    par.innerHTML = par.textContent
+                }, 400)
+            }
+        })
+        arrows.forEach(item => {
+            item.style.display = 'block'
+        })
+        window.onscroll = function () {};
     }
     body.addEventListener('click', (e) => {
         if(e.target.closest('.popup-btn') && e.target.parentNode.parentNode.closest('.swiper-slide-active')) {
@@ -84,4 +99,5 @@ export function modal () {
             closeModal()
         }
     })
+    
 }

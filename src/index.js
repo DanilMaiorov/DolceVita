@@ -5,6 +5,7 @@ import { modal } from './modules/modal';
 import { scroll } from './modules/scroll';
 import { priceSlider } from './modules/priceSlider';
 import { sendForm } from './modules/sendForm';
+import { burger } from './modules/burger';
 //import { sendService } from './modules/sendService';
 
 modal();
@@ -16,6 +17,7 @@ sendForm({ formId: 'form1', someElem: [
         id: 'form1-message',
     },
 ]});
-sendForm({ formId: 'form2' })
+sendForm({ formId: 'form2' });
+burger();
 
 //sendService()

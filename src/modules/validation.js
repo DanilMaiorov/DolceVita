@@ -18,7 +18,7 @@ export function validation (data) {
             console.log(successEmail);
         }
         if(input.closest('[name=phone]')) {
-            successPhone = /^[0-9()-\+]+/.test(input.value)
+            successPhone = /^[0-9()-\+]{6,}/.test(input.value)
             console.log(successPhone);
         }
         if(input.closest('[name=message]')) {
@@ -38,7 +38,6 @@ export function validation (data) {
      }/*  else if (successName && successPhone && successMessage && (successEmail || !successEmail) ) {
        // debugger
         success = true
-        console.log('отправка произошла из второй формы');
     
  } */  else {
        // debugger

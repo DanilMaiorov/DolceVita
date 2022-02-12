@@ -53,6 +53,30 @@
         </div>
         <div class="header__cover"></div>
     </header>
+    <div class="header__burger">
+        <div class="burger__content">
+            <ul class="burger-list">
+                <li class="burger-list__item">
+                    <a href="#portfolio" class="nav-list__item-link">Портфолио</a>
+                </li>
+                <li class="burger-list__item">
+                    <a href="#profile" class="nav-list__item-link">Профайл</a>
+                </li>
+                <li class="burger-list__item">
+                    <a href="#price" class="nav-list__item-link">Прайс</a>
+                </li>
+                <li class="burger-list__item">
+                    <a href="#feedback" class="nav-list__item-link">Обратная связь/Как нас найти?</a>
+                </li>
+            </ul>
+            <div class="burger-logo burger-list__item">
+                <a href="#header">
+                    <img src="./imgNew/logo_top.jpg" alt="" class="logo-img__img">
+                </a>
+            </div>
+        </div>
+    </div>
+    <main>
 <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
@@ -61,7 +85,7 @@
                     <h2 class="title-text">Портфолио</h2>
                 </div>
                 <div class="portfolio__items">
-                    <div class="item-portfolio extra">
+                    <div class="item-portfolio">
                         <div class="item-portfolio__img">
                             <img src="/imgNew/portfolio-1.PNG" alt="studio photo">
                         </div>
@@ -73,7 +97,7 @@
                         </div>
                         <span class="item-portfolio__text">Portrait</span>
                     </div>
-                    <div class="item-portfolio extra">
+                    <div class="item-portfolio">
                         <div class="item-portfolio__img">
                             <img src="/imgNew/portfolio-3.PNG" alt="theme photo">
                         </div>
@@ -85,7 +109,7 @@
                         </div>
                         <span class="item-portfolio__text">Baby Photo</span>
                     </div>
-                    <div class="item-portfolio extra">
+                    <div class="item-portfolio">
                         <div class="item-portfolio__img">
                             <img src="/imgNew/portfolio-5.PNG" alt="lovestory photo">
                         </div>
@@ -122,7 +146,6 @@
             </div>
         </div>
     </section>
-
 <!-- Price Section -->
     <section class="price" id="price">
 
@@ -202,10 +225,10 @@
                             <div class="form">
                                 <form id="form1" class="question__form" action="#">
                                     <div class="input form__inputs">    
-                                        <input class="input form__input name-input" name="name" type="text" placeholder="Введите ваше имя">
-                                        <input class="input form__input phone-input" name="phone" type="text" placeholder="Введите ваш телефон">
+                                        <input class="input form__input name-input" name="name" type="text" placeholder="Введите ваше имя" required>
+                                        <input class="input form__input phone-input" name="phone" type="text" placeholder="Введите ваш телефон" required>
                                     </div>
-                                    <textarea id="form1-message" class="input form__input " name="message" cols="10"  placeholder="Ваше сообщение"></textarea> 
+                                    <textarea id="form1-message" class="input form__input " name="message" cols="10"  placeholder="Ваше сообщение" required></textarea> 
                                     <button class="button form__button btn-form1" type="submit">Отправить сообщение</button>
                                 </form>
                             </div>
@@ -223,6 +246,7 @@
             </div>
         </div>   
     </section>
+    </main>
 <!-- Footer section -->
     <footer class="footer">
         <div class="container">
