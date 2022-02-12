@@ -600,11 +600,13 @@ hr {
 }
 .header__burger {
     display: none;
+    position: relative;
 }
 .is-active {
     display: block;
     opacity: 1;
 }
+
 @media (max-width: 1220px) {
     .header__content, .profile__content, .price__wrapper, .form-question, .portfolio__items, .footer_items {
         padding: 0 3rem 0 3rem;
@@ -824,6 +826,25 @@ hr {
         background-color: white;
         z-index: 800;
     }
+    .close-burger {
+        position: absolute;
+        top: 9%;
+        left: 5%;
+        width: 5rem;
+        padding: 1rem;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: 0.6s all;
+    }
+    .close-burger:hover {
+        background-color: silver;
+        opacity: 0.6;
+        transition: 0.6s all;
+    }
+    .close-burger img{
+        width: 100%;
+        height: auto;
+    }
     .burger__content {
         display: flex;
         flex-direction: column;
@@ -832,6 +853,7 @@ hr {
     }
     .burger-list {
         padding-top: 3rem;
+        position: relative;
     }
     .burger-logo {
         width: 10rem;
