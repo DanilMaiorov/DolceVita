@@ -3,18 +3,17 @@ import { disableScrolling } from './helpers';
 
 export function modal () {
 
-    const modal = document.querySelector('.popup')
-    const modalInst = document.querySelector('.popup-inst')
-    const modalOverlay = document.querySelector('.popup-overlay')
-    const body = document.querySelector('body')
-    const priceTitles = document.querySelectorAll('.top-part__title')
-    const par = document.querySelector('.par')
-    const form = document.querySelector('.form-popup')
-    const popupTitle = document.querySelector('.popup__title')
-    const arrowsPrev = document.querySelector('.price__arrow-prev')
-    const arrowsNext = document.querySelector('.price__arrow-next')
-    const arrows = [arrowsPrev, arrowsNext]
-    console.log(arrows);
+    const modal = document.querySelector('.popup'),
+          modalInst = document.querySelector('.popup-inst'),
+          modalOverlay = document.querySelector('.popup-overlay'),
+          body = document.querySelector('body'),
+          priceTitles = document.querySelectorAll('.top-part__title'),
+          par = document.querySelector('.par'),
+          form = document.querySelector('.form-popup'),
+          popupTitle = document.querySelector('.popup__title'),
+          arrowsPrev = document.querySelector('.price__arrow-prev'),
+          arrowsNext = document.querySelector('.price__arrow-next'),
+          arrows = [arrowsPrev, arrowsNext]
 
     function animation (x, y) {
         form.style.display = 'block'
@@ -52,11 +51,10 @@ export function modal () {
     } 
     function openInstModal () {
         animation(modalInst, modalOverlay)
-        body.style.overflow = 'hidden'
-        body.style.zIndex = '1000'
         disableScrolling()
     } 
     function closeModal () {
+        window.onscroll = function () {};
         animate({
             duration: 400,
             timing(timeFraction) {
@@ -97,6 +95,7 @@ export function modal () {
         }
         if(e.target.closest('.popup-overlay') || e.target.closest('.popup__close') || e.target.closest('.popup-inst__btn')) {
             closeModal()
+            window.onscroll = function () {};
         }
     })
     

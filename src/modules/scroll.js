@@ -1,12 +1,12 @@
 import { animate } from './helpers';
 
 export function scroll () {
-    const header = document.querySelector('.header__content')
-    const footer = document.querySelector('.footer')
-    const pageNavLinks = [...Array.from(header.querySelectorAll('li > a')), ...Array.from(footer.querySelectorAll('li > a'))]
-    const arrowUp = document.querySelector('.arrow-up')
-    const logoLeft = header.querySelector('img')
-    const arrayUp = [arrowUp, logoLeft]
+    const header = document.querySelector('.header__content'),
+          footer = document.querySelector('.footer'),
+          pageNavLinks = [...Array.from(header.querySelectorAll('li > a')), ...Array.from(footer.querySelectorAll('li > a'))],
+          arrowUp = document.querySelector('.arrow-up'),
+          logoLeft = header.querySelector('img'),
+          arrayUp = [arrowUp, logoLeft]
 
     pageNavLinks.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -31,16 +31,16 @@ export function scroll () {
 
     window.addEventListener('scroll', () => {
         if (scrollY >= 600) {
-          arrowUp.style.zIndex = '999';
-          arrowUp.style.opacity = '0.6';
-          arrowUp.style.transition = '0.6s opacity'
-          arrowUp.style.display = 'block';
-      } else {
-          arrowUp.style.opacity = '0'; 
-          arrowUp.style.transition = '.6s all';
-          arrowUp.style.zIndex = '-1';
-      }   
-  })
+            arrowUp.style.zIndex = '999';
+            arrowUp.style.opacity = '0.6';
+            arrowUp.style.transition = '0.6s opacity'
+            arrowUp.style.display = 'block';
+        } else {
+            arrowUp.style.opacity = '0'; 
+            arrowUp.style.transition = '.6s all';
+            arrowUp.style.zIndex = '-1';
+        }   
+    })
     arrayUp.forEach((item) => {
         item.addEventListener('click', (e) => {
             e.preventDefault()
