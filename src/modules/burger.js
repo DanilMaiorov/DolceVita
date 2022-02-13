@@ -49,7 +49,7 @@ export function burger () {
     })
     burger.addEventListener('click', (e) => {
         e.preventDefault()
-        if(e.target.closest('close-burger') || e.target.closest('.burger-list__item')) {
+        if(e.target.closest('close-burger') || e.target.closest('.burger-list__item') || e.target.closest('.close-burger')) {
             burger.classList.toggle('is-active')
             openBurger.classList.toggle('header__content-mob-menu-hover')
             burgerClose()
@@ -68,4 +68,3 @@ export function burger () {
         }
     })
 }
-

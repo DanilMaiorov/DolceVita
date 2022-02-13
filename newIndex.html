@@ -68,13 +68,18 @@
                 <li class="burger-list__item">
                     <a href="#feedback" class="nav-list__item-link">Обратная связь/Как нас найти?</a>
                 </li>
+                <div class="close-burger">
+                    <img src="./imgNew/kisspng-computer-icons-cross-delete-button-desktop-wallpap-treasure-map-5adce4c92a3ce0.903095661524425929173.png" alt="close icon">
+                </div>
             </ul>
             <div class="burger-logo burger-list__item">
                 <a href="#header">
                     <img src="./imgNew/logo_top.jpg" alt="" class="logo-img__img">
                 </a>
+
             </div>
         </div>
+
     </div>
     <main>
 <!-- Portfolio Section -->
@@ -223,7 +228,7 @@
                                 <h2 class="title-text center">Обратная связь</h2>
                             </div>
                             <div class="form">
-                                <form id="form1" class="question__form" action="#">
+                                <form id="form1" class="question__form" action="sendmail.php" method="POST">
                                     <div class="input form__inputs">    
                                         <input class="input form__input name-input" name="name" type="text" placeholder="Введите ваше имя" required>
                                         <input class="input form__input phone-input" name="phone" type="text" placeholder="Введите ваш телефон" required>
@@ -299,7 +304,7 @@
             <button class="popup__close close-main-form fas fa-times"></button>
             <div class="popup__title"></div>
             <div class="popup__content">
-                <form id="form2" class="form-popup" action="">
+                <form id="form2" class="form-popup" action="sendmail.php" method="POST">
                     <input class="form-input name-input" type="name" name="name" placeholder="Введите ваше имя*" required>
                     <input class="form-input phone-input" type="tel" name="phone" placeholder="Введите ваш телефон*" >
                     <input class="form-input email-input" type="email" name="email" placeholder="Введите ваш E-Mail">
