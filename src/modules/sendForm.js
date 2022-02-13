@@ -93,7 +93,6 @@ export function sendForm ({ formId, someElem = [] }) {
                 } 
             })  
         form.reset()
-
     }
     function submitForm () {
         const formElements = form.querySelectorAll('input')
