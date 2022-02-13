@@ -72,9 +72,11 @@ export function sendForm ({ formId, someElem = [] }) {
                         remove()
                         par.innerHTML = par.textContent
                         form.style.display = 'block'
+                        window.onscroll = function () {};
                     }, 300)
             } 
         })
+
     }
     function resetForm () {
         let timerId = setTimeout(() => {
@@ -91,6 +93,7 @@ export function sendForm ({ formId, someElem = [] }) {
                 } 
             })  
         form.reset()
+
     }
     function submitForm () {
         const formElements = form.querySelectorAll('input')
@@ -135,7 +138,7 @@ export function sendForm ({ formId, someElem = [] }) {
             font-size: 2rem;
             `
         if(validation(formElements)) {
-            sendService('sendmail.php', 'POST', formBody)
+            sendService(/* 'sendmail.php' */'https://jsonplaceholder.typicode.com/posts/', 'POST', formBody)
             .then(data => {                
                 statusBlock.textContent = successText
                 statusBlock.style.cssText = `

@@ -36,7 +36,7 @@ export function modal () {
             }
         })
     }
-     function openModal () { 
+    function openModal () { 
         animation(modal, modalOverlay)
         modal.childNodes[1].childNodes[5].childNodes[1].childNodes.forEach(item => {
             if(item.tagName == 'INPUT') {
@@ -54,7 +54,6 @@ export function modal () {
         disableScrolling()
     } 
     function closeModal () {
-        window.onscroll = function () {};
         animate({
             duration: 400,
             timing(timeFraction) {
