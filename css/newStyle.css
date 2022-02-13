@@ -93,7 +93,7 @@ hr {
 .header__cover { 
     width: 100vw;
     min-width: 100vw;
-    background: url(/imgNew/main-cover.jpg) 50% 50% / cover no-repeat;
+    background: url(./imgNew/main-cover.jpg) 50% 50% / cover no-repeat;
     height: 100vh;
 }
 /* Стили CardSection */
@@ -323,7 +323,7 @@ hr {
     text-align: center;
 }
 .question__cover {
-    background: linear-gradient( rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8) ), url(/imgNew/main-cover.jpg);
+    background: linear-gradient( rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8) ), url(./imgNew/main-cover.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
